@@ -1,8 +1,7 @@
 import { Router } from 'express'
-import { MongoHelper } from '../../infra/db/mongodb/helpers/mongo-helper'
+import { makeSignUpController } from '../../main/factories/signup'
+import { adaptRoute } from '../adapters/express-route-adapter'
 
 export default (router: Router): void => {
-  router.post('/signup', (req, res) => {
-    res.json({ ok: 'ok' })
-  })
+  router.post('/signup', adaptRoute(makeSignUpController()))
 }
